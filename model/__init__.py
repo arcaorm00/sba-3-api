@@ -6,5 +6,6 @@ from model.iris_model import IrisModel
 
 if __name__ == '__main__':
     iris = IrisModel()
-
-    
+    # iris.draw_scatter()
+    # iris.draw_errors()
+    iris.draw_adaline_graph()
