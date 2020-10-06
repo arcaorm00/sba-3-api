@@ -89,8 +89,8 @@ class Seoulcctv:
     def get_cctv_pop(self):
         reader = self.fileReader
         reader.context = os.path.join(baseurl, 'saved_data')
-        reader.fname = 'crime_police.csv'
-        cctv_pop = reader.csv_to_dframe()
+        reader.fname = 'cctv_pop.csv'
+        cctv_pop = pd.read_csv(reader.new_file(), encoding='UTF-8', sep=',', index_col='구별')
         print(f'{cctv_pop.head()}')
         return cctv_pop
 
