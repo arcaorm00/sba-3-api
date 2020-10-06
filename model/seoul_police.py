@@ -28,7 +28,7 @@ class Seoulpolice:
         crime = Seoulcrime()
         crime_police = crime.get_crime_police()
         police = pd.pivot_table(crime_police, index='구별', aggfunc=np.sum)
-        print(f'{police.head()}') # 구별로 값을 모두 더함
+        print(f'{police.head()}') # 같은 구에 해당하는 값을 모두 더함
 
         police['살인검거율'] = (police['살인 검거']/police['살인 발생']) * 100
         police['강도검거율'] = (police['강도 검거']/police['강도 발생']) * 100
@@ -40,7 +40,7 @@ class Seoulpolice:
         crime_rate_columns = ['살인검거율', '강도검거율', '강간검거율', '절도검거율', '폭력검거율']
 
         for i in crime_rate_columns:
-            police.loc[police[i] > 100, 1] = 100 # 데이터 값의 기간오류 탓에 확률이 100이 넘으면 100으로 계산
+            police.loc[police[i] > 100, 1] = 100 # 데이터 값의 기간오류 탓에 확률이 100이 넘으면 100으로 변경
 
         police.rename(columns={
             '살인 발생': '살인',
@@ -52,7 +52,20 @@ class Seoulpolice:
         crime_columns = ['살인', '강도', '강간', '절도', '폭력']
 
         x = police[crime_rate_columns].values
-        min_max_scaler = preprocessing.MinMaxScaler()
+        min_max_scaler = preprocessing.MinMaxScaler() 
+        # 스케일: 대수를 표준화 시키기 위함 (평균 0 분산 1)
+        # 스케일링은 선형변환을 적응하여 전체 자료의 분포를 평균 0, 분산 1이 되도록 만드는 과정
+        x_scaled = min_max_scaler.fit_transform(x.astype(float)) 
+        # 연속형 자료형으로 만들기 위함. 왜? 정규 분포를 그려야 하니까. 왜? 회귀니까!
+        '''
+        정규화(normalization)
+        많은 양의 데이터를 처리함에 있어 여러 이유로 정규화, 즉 데이터의 범위를 일치시키거나
+        분포를 유사하게 만들어 주는 등의 작업. 평균값 정규화, 중간값 정규화 등...
+        '''
+        police_norm = pd.DataFrame(x_scaled, columns=crime_columns, index=police.index)
+        police_norm[crime_rate_columns] = police[crime_rate_columns]
+
+
 
 if __name__ == '__main__':
     police = Seoulpolice()
