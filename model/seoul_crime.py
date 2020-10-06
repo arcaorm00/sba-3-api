@@ -5,17 +5,22 @@ baseurl = os.path.dirname(os.path.abspath(__file__))
 from util.file_helper import FileReader
 import pandas as pd
 import numpy as np
-
+'''
+Index(['Unnamed: 0', '관서명', '살인 발생', '살인 검거', '강도 발생', '강도 검거', '강간 발생',
+       '강간 검거', '절도 발생', '절도 검거', '폭력 발생', '폭력 검거', '구별'],
+      dtype='object')
+'''
 class Seoulcrime:
 
     def __init__(self):
         self.fileReader = FileReader()
 
     def hook_process(self):
-        print('--------------- CCTV & POP ---------------')
+        print('--------------- CRIME & POLICE ---------------')
         crime = self.get_crime()
         # self.get_station(crime)
-        self.get_crime_police()
+        crime_police = self.get_crime_police()
+        print(crime_police.columns)
 
     def get_crime(self):
         reader = self.fileReader
