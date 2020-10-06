@@ -1,6 +1,7 @@
 import os
 from dataclasses import dataclass
 import pandas as pd
+import googlemaps
 
 @dataclass
 class FileReader:
@@ -22,3 +23,6 @@ class FileReader:
         file = self.new_file()
         return pd.read_excel(file, header=header, usecols=usecols)
         # pandas version 1.x 이상 encoding='UTF-8' 불필요
+
+    def create_gmaps(self):
+        return googlemaps.Client(key='AIzaSyCuDLFW3iEUjhHKIISgxD_bacUUvFxghPw')
