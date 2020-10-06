@@ -25,4 +25,4 @@ class FileReader:
         # pandas version 1.x 이상 encoding='UTF-8' 불필요
 
     def create_gmaps(self):
-        return googlemaps.Client(key='AIzaSyCuDLFW3iEUjhHKIISgxD_bacUUvFxghPw')
+        return googlemaps.Client(key='')
