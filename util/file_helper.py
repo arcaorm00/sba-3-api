@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass
 import pandas as pd
 import googlemaps
+import json
 
 @dataclass
 class FileReader:
@@ -26,3 +27,7 @@ class FileReader:
 
     def create_gmaps(self):
         return googlemaps.Client(key='')
+
+    def json_load(self):
+        file = self.new_file()
+        return json.load(open(file, encoding='UTF-8'))
