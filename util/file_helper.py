@@ -26,7 +26,7 @@ class FileReader:
         # pandas version 1.x 이상 encoding='UTF-8' 불필요
 
     def create_gmaps(self):
-        return googlemaps.Client(key='')
+        return googlemaps.Client(key='AIzaSyCuDLFW3iEUjhHKIISgxD_bacUUvFxghPw')
 
     def json_load(self):
         file = self.new_file()
