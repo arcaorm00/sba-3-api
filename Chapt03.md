@@ -35,8 +35,9 @@ neuron
 perceptron 활성화함수 O, 계단함수
 NN      활성화함수 O, 시그모이드, 이산 정수
     AI 겨울
-    NN 단위 단수형 -> 복수형 (DNN)
-    DNN     (deep) NN을 layer라고 부른다. {algo + nn + dframe + function(main)} ==> model
+    NN 단위 단수형 -> 복수형 (DNN) layer가 1개
+    DNN     (deep) NN을 layer라고 부른다.
+            {algo + nn + dframe + function(main)} ==> model
     CNN     활성화함수 O, ReLU, 연속 실수값
     RNN     
     lstm

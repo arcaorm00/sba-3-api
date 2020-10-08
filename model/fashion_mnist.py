@@ -24,7 +24,7 @@ class FashionMnist:
         test_images = arr[1]
         test_labels = arr[2]
 
-        i = 5
+        i = 9
 
         plt.figure(figsize=(6, 3))
         plt.subplot(1, 2, 1)
