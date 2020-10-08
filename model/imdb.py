@@ -7,6 +7,9 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 import tensorflow_hub as hub
 import util.version_checker as version_checker
+# > pip install tensorflow_hub
+# > pip install tensorflow-datasets
+
 
 class Imdb:
     
