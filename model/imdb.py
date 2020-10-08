@@ -58,13 +58,13 @@ class Imdb:
 
     # 모델 훈련
     def train_model(self):
-        self.model.fit(self.train_data.shuffle(10000).batch(512), epoch=20, 
+        self.model.fit(self.train_data.shuffle(10000).batch(512), epochs=20, 
         validation_data=self.validation_data.batch(512), verbose=1) # 512 = 2 ^9
     
     # 모델 평가
     def eval_model(self):
         results = self.model.evaluate(self.test_data.batch(512), verbose=2)
-        for name, value in zip(self.model.metrics_name, results):
+        for name, value in zip(self.model.metrics_names, results):
             print('%s: %.3f' % (name, value))
 
     # 모델 디버깅
